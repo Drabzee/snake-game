@@ -3,6 +3,11 @@
     src: url('/fonts/Urbanjungle.otf');
 }
 
+@font-face {
+    font-family: Erlank;
+    src: url('/fonts/Erlank-rgKB7.otf');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +20,8 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     align-items: center;
     justify-content: center;
 }
@@ -74,4 +81,10 @@ body {
         font-weight: 48px;
         width: 300px;
     }
+}
+
+.score {
+    font-family: Erlank;
+    font-size: 30px;
+    color: #4d2711;
 }

@@ -3,6 +3,7 @@ import { BLOCK_SIZE } from './constants.js';
 import { gameState, incrementSpeed } from './states.js';
 import { checkForFoodConsumption } from './food-controller.js'
 import { finishGameAndResetState } from './main.js';
+import Score from './score-controller.js';
 
 const centerCoordinates = {x: Math.ceil(totalBlockX/2), y: Math.ceil(totalBlockY/2)};
 
@@ -39,9 +40,13 @@ export const updateSnakePositionInMovingDirection = () => {
     });
 
     if(checkForFoodConsumption()) {
+        const eatAudio = new Audio('../audio/eat.mp3');
+        Score.updateAndRenderScore();
+        eatAudio.play();
         incrementSpeed();
         increaseSnakeLength();
     } else if(checkForCollision()) {
+        Score.setHighscore();
         finishGameAndResetState();
         return;
     }

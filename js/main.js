@@ -2,6 +2,7 @@ import { updateSnakePositionInMovingDirection, renderSnakeForPosition, resetSnak
 import { gameState, resetSpeed, speed, toggleGameState } from './states.js';
 import { renderFoodAtPosition, resetFoodPosition } from './food-controller.js';
 import { endAudio } from './audio.js';
+import Score from './score-controller.js';
 
 let prevTimestamp = 0;
 let speedBuffer = 20;
@@ -24,7 +25,8 @@ const initializeGame = (timestamp) => {
 
 export const finishGameAndResetState = () => {
     endAudio.play();
-    displayOrHideOverlayWithMessage(true, 'OOUCH!!!')
+    displayOrHideOverlayWithMessage(true, 'OOUCH!!!');
+    Score.initializeScore();
     resetSpeed();
     toggleGameState();
     resetSnakePositionAndDirection();
@@ -57,3 +59,4 @@ document.addEventListener('keydown', (e) => {
 resetSnakePositionAndDirection();
 renderSnakeForPosition();
 displayOrHideOverlayWithMessage(true, 'Press spacebar to begin the adventure');
+Score.initializeScore();

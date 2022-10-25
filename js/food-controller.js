@@ -26,10 +26,8 @@ export const updateFoodPositionAtRandom = () => {
 
 export const checkForFoodConsumption = () => {
     if(foodPosition === null) return false;
-    
+
     if(foodPosition.x === snakePosition[0].x && foodPosition.y === snakePosition[0].y) {
-        const eatAudio = new Audio('/music/eat.mp3');
-        eatAudio.play();
         return true;
     }
 
