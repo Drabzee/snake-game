@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('/images/background.webp');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board {
+    box-sizing: content-box;
+    background-color: #4e5f3cef;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 40px);
+    grid-template-rows: repeat(auto-fill, 40px);
+    gap: 0px;
+    border: 10px solid #63371d;
+    box-shadow: 0 0 14px 0px #000 inset;
+}
+
+.board .snake {
+    border-radius: 15px;
+    border: 2px solid #00000099;
+}
+
+.board .snake.head { background-color: #5E8A32; }
+.board .snake.body { background-color: #5D986B; scale: 0.9; }
+
+.board .food {
+    background-color: red;
+    border-radius: 99px;
+    border: 2px solid #00000099;
+}
