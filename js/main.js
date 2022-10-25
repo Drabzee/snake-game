@@ -1,7 +1,7 @@
 import { updateSnakePositionInMovingDirection, renderSnakeForPosition, resetSnakePositionAndDirection } from './snake-controller.js';
 import { gameState, resetSpeed, speed, toggleGameState } from './states.js';
 import { renderFoodAtPosition, resetFoodPosition } from './food-controller.js';
-import { endAudio } from './audio.js';
+import { playEndAudio } from './audio.js';
 import Score from './score-controller.js';
 
 let prevTimestamp = 0;
@@ -24,7 +24,7 @@ const initializeGame = (timestamp) => {
 }
 
 export const finishGameAndResetState = () => {
-    endAudio.play();
+    playEndAudio();
     displayOrHideOverlayWithMessage(true, 'OOUCH!!!');
     Score.initializeScore();
     resetSpeed();

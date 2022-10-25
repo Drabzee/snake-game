@@ -1,13 +1,13 @@
-import { pauseAudio, startAudio } from "./audio.js";
+import { playPauseAudio, playStartAudio } from "./audio.js";
 
 export let gameState = 'PAUSED';
 export const toggleGameState = () => {
     if(gameState === 'PAUSED') {
         gameState = 'RUNNING';
-        startAudio.play();
+        playStartAudio();
     } else {
         gameState = 'PAUSED';
-        pauseAudio.play();
+        playPauseAudio();
     }
 }
 export const finishGameState = () => gameState = 'FINISHED';

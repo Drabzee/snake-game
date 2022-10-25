@@ -1,4 +1,4 @@
-import { highscoreAudio } from "./audio.js";
+import { playHighscoreAudio } from "./audio.js";
 
 const scoreDom = document.querySelector('.score');
 
@@ -7,7 +7,7 @@ function Score() {
     this.updateAndRenderScore = () => {
         this.score++;
         if(this.score === this.highScore) {
-            highscoreAudio.play();
+            playHighscoreAudio();
         }
         scoreDom.innerText = `${this.score} / ${this.highScore > this.score ? this.highScore : this.score}`;
     };
