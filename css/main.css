@@ -1,11 +1,11 @@
 @font-face {
     font-family: Urban jungle;
-    src: url('/fonts/Urbanjungle.otf');
+    src: url('../fonts/Urbanjungle.otf');
 }
 
 @font-face {
     font-family: Erlank;
-    src: url('/fonts/Erlank-rgKB7.otf');
+    src: url('../fonts/Erlank-rgKB7.otf');
 }
 
 * {
@@ -15,7 +15,7 @@
 }
 
 body {
-    background-image: url('/images/background.webp');
+    background-image: url('../images/background.webp');
     background-size: cover;
     width: 100vw;
     height: 100vh;
