@@ -6,7 +6,6 @@ function Score() {
     this.score = 0;
     this.updateAndRenderScore = () => {
         this.score++;
-        console.log(this.score, this.highScore);
         if(this.score === this.highScore) {
             highscoreAudio.play();
         }
