@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Urban jungle;
+    src: url('/fonts/Urbanjungle.otf');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -37,4 +42,36 @@ body {
     background-color: red;
     border-radius: 99px;
     border: 2px solid #00000099;
+}
+
+.overlay {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000088;
+}
+
+.overlay h1 {
+    font-family: Urban jungle;
+    color: white;
+    font-size: 48px;
+    letter-spacing: 4px;
+    line-height: 1.33;
+    width: 300px;
+    text-align: center;
+    animation: strobe-animation 1s linear alternate infinite;
+}
+
+@keyframes strobe-animation {
+    0% {
+        font-size: 30px;
+        width: 210px;
+    }
+    100% {
+        font-weight: 48px;
+        width: 300px;
+    }
 }

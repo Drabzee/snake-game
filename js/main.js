@@ -24,18 +24,36 @@ const initializeGame = (timestamp) => {
 
 export const finishGameAndResetState = () => {
     endAudio.play();
+    displayOrHideOverlayWithMessage(true, 'OOUCH!!!')
     resetSpeed();
     toggleGameState();
     resetSnakePositionAndDirection();
     resetFoodPosition();
 }
 
+const displayOrHideOverlayWithMessage = (toShow, msg = null) => {
+    const overlayDom = document.querySelector('.overlay');
+    overlayDom.innerHTML = '';
+    if(!toShow) {
+        overlayDom.style.display = 'none';
+        return;
+    }
+    const headingDom = document.createElement('h1');
+    headingDom.innerText = msg;
+    overlayDom.appendChild(headingDom);
+    overlayDom.style.display = 'flex';
+}
+
+
 document.addEventListener('keydown', (e) => {
     if(e.key === ' ') {
         toggleGameState();
+        if(gameState === 'RUNNING') displayOrHideOverlayWithMessage(false);
+        else displayOrHideOverlayWithMessage(true, 'PAUSED')
         window.requestAnimationFrame(initializeGame);
     }
 });
 
 resetSnakePositionAndDirection();
 renderSnakeForPosition();
+displayOrHideOverlayWithMessage(true, 'Press spacebar to begin the adventure');

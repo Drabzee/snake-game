@@ -1,15 +1,25 @@
 import boardDOM, { totalBlockX, totalBlockY } from './initialize-board.js';
 import { BLOCK_SIZE } from './constants.js';
 import { snakePosition } from './snake-controller.js';
-import { eatAudio } from './audio.js';
 import { gameState } from './states.js';
 
 export let foodPosition = null;
 
+const checkForConflictingPosition = () => {
+    for (const snakePos of snakePosition) {
+        if(foodPosition.x === snakePos.x && foodPosition.y === snakePos.y)
+            return true;
+    }
+    return false;
+}
+
 export const updateFoodPositionAtRandom = () => {
-    foodPosition = {
-        x: Math.floor((Math.random() * totalBlockX) + 1),
-        y: Math.floor((Math.random() * totalBlockY) + 1)
+    while(true) {
+        foodPosition = {
+            x: Math.floor((Math.random() * totalBlockX) + 1),
+            y: Math.floor((Math.random() * totalBlockY) + 1)
+        }
+        if(!checkForConflictingPosition()) break;
     }
     renderFoodAtPosition();
 }
@@ -18,6 +28,7 @@ export const checkForFoodConsumption = () => {
     if(foodPosition === null) return false;
     
     if(foodPosition.x === snakePosition[0].x && foodPosition.y === snakePosition[0].y) {
+        const eatAudio = new Audio('/music/eat.mp3');
         eatAudio.play();
         return true;
     }
